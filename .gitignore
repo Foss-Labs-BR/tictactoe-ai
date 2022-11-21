@@ -1,0 +1,9 @@
+in/*
+!in/.keep
+
+out/*
+!out/logs/
+!out/.keep
+
+out/logs/*
+!out/logs/.keep
