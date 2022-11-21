@@ -4,6 +4,8 @@ import statistics
 import collections
 from modules.globals import env
 from modules.train_step import trainStep
+from modules.scores import showScores
+
 
 def singleTrain(
         replay,
@@ -27,6 +29,8 @@ def singleTrain(
 
     episodes_reward: collections.deque = collections.deque(
         maxlen=1000)
+
+    scores = []
 
     # Roda os episódios
     with tqdm.trange(maxEpisodes) as episodes:
@@ -58,6 +62,8 @@ def singleTrain(
                 # Salva o tabuleiro
                 env.saveBoardGame()
 
+                showScores(scores, name=env.config['plotPath'])
+
             # Verifica se é hora de atualizar a rede neural
             if episode % 300 == 0 and episode > 0:
                 update = True
@@ -76,6 +82,9 @@ def singleTrain(
 
             # Calcula a média de recompensas
             running_reward = statistics.mean(episodes_reward)
+
+            # Scores
+            scores.append(sum(episodes_reward) / (len(episodes_reward) + 1.))
 
             episodes.set_description(f'Episode {episode}')
 
