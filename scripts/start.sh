@@ -1,4 +1,5 @@
 set -x
+kill $(<out/logs/pid.txt)
 ./scripts/down.sh
 
 TIMESTAMP=$(date +%s)
