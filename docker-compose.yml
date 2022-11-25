@@ -3,7 +3,6 @@ services:
     build:
       context: .
     network_mode: host
-    #runtime: nvidia
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - DISPLAY=$DISPLAY
@@ -14,8 +13,8 @@ services:
       - 5679:5679
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      #- ./in/notebooks:/tf/notebooks
       - ./out/logs:/content/logs
+      - ./out/files:/content/files
     deploy:
       resources:
         limits:

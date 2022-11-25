@@ -3,7 +3,19 @@ in/*
 
 out/*
 !out/logs/
+!out/old-logs/
+!out/old-files/
+!out/files/
 !out/.keep
 
 out/logs/*
 !out/logs/.keep
+
+out/old-logs/*
+!out/old-logs/.keep
+
+out/old-files/*
+!out/old-files/.keep
+
+out/files/*
+!out/files/.keep
